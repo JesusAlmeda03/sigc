@@ -368,7 +368,8 @@ class Inicio_model extends CI_Model {
 	//
 	function get_areas() {
 		$condicion = array(
-			'Area <>' => 'Invitado'
+			'Area <>' => 'Invitado',
+			'PaginaWeb <>' => 2
 		);
 		$this->db->order_by('Area');
 		$consulta = $this->db->get_where( 'ab_areas', $condicion );
