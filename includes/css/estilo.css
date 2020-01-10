@@ -1,0 +1,577 @@
+/* -----------------------------------------------
+	http://scalidad.ujed.mx/includes/css/style.css
+	Descripción: Hoja de estilos del SIGC UJED 2.0
+	Fecha de Creación:     26/Septiembre/2011
+	Ultima actualización:  26/Septiembre/2011
+	Autor: ISC Rogelio Castañeda Andrade - HERE (http://www.webhere.com.mx) - rogeliocas@gmail.com
+----------------------------------------------- */
+
+/* -----------------------------------------------
+	Restauración Global
+----------------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+}
+
+/* -----------------------------------------------
+	Elementos Básicos
+----------------------------------------------- */
+* {
+	padding: 0; margin: 0;
+}
+
+img {
+	border:0;
+}
+
+
+a {
+	color:#00346A;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#666666;
+	text-decoration:none;
+}
+
+.a2 {
+	color:#333;
+	text-decoration:none;
+}
+
+.a2:hover {
+	color:#00346A;
+	text-decoration:none;
+}
+
+/* -----------------------------------------------
+	Elementos de Formularios
+----------------------------------------------- */
+.tabla_form .text_form {
+	text-align:right;
+	padding-right:10px;
+	font-size:14px;
+}
+
+.tabla_form .titulo_tabla{
+	font-size:24px
+}
+
+/*text box*/
+input.in_text {
+	width:98%;
+	padding:5px;
+	border:1px solid #CCCCCC;
+	-moz-border-radius			: 5px;
+	-webkit-border-radius 		: 5px;
+	border-radius 				: 5px;
+}
+input.in_text:hover {
+	border:1px solid #00346A;
+}
+
+/*botón*/
+input.in_button {
+	width:120px;
+	height:45px;
+	font-size:16px;
+	letter-spacing:3px;
+}
+
+/*text area*/
+textarea {
+	width:98%;
+	height:130px;
+	padding:5px;
+	border:1px solid #CCCCCC;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:13px;
+	-moz-border-radius			: 5px;
+	-webkit-border-radius 		: 5px;
+	border-radius 				: 5px;
+}
+textarea:hover {
+	border:1px solid #00346A;
+}
+
+/*select*/
+select{
+	width:60%;
+	padding:5px;
+	border:1px solid #CCCCCC;
+	margin:0px;
+	background-color: #FFFFFF;
+	-moz-border-radius			: 5px;
+	-webkit-border-radius 		: 5px;
+	border-radius 				: 5px;
+}
+select:hover {
+	border:1px solid #00346A;
+}
+
+option {
+
+}
+
+
+/* -----------------------------------------------
+	Estructura General
+----------------------------------------------- */
+body {
+	background-color:#EEEEEE;
+	font-family: 'Nunito', sans-serif;
+	font-size:12px;
+}
+
+.wrapper {
+	width:100%;
+	height:auto;
+	background-color:#FFF;
+	padding:0 0 25px 0;
+}
+
+	.top {
+		width:100%;
+		height:auto;
+	}
+
+		.banner {
+			width:auto;
+			height:68px;
+			background:#00346A;
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		.menu {
+			width:auto;
+			height:60px;
+			background-color:#EEEEEE;
+			position:relative;
+			z-index: 200;
+		}
+
+			.menu_item {
+				font-size:19px;
+				padding-top:0;
+				letter-spacing:1px;
+			}
+
+	.usuario_admin {
+		width:970px;
+		height:auto;
+		margin:0 auto 10px;
+		border:1px solid #EEE;
+		padding:5px;
+	}
+
+	.content {
+		width:980px;
+		height:auto;
+		margin:10px auto 0;
+	}
+
+		.cont_admin {
+			width:980px;
+			height:auto;
+			background-color:#FFFFFF;
+			z-index: 100;
+			float:left;
+
+			margin-bottom				: 15px;
+			-moz-border-radius			: 5px;
+			-webkit-border-radius 		: 5px;
+			border-radius 				: 5px;
+			border-top-right-radius		: 0;
+			border-bottom-right-radius	: 0;
+		}
+
+		.cont {
+			width:700px;
+			height:auto;
+			background-color:#FFFFFF;
+			z-index: 100;
+			float:left;
+
+		}
+
+			.titulo {
+				width:auto;
+				font-size:28px;
+				letter-spacing:1px;
+				padding:5px;
+				background-color:#F0F0F0;
+				border:1px solid #CCCCCC;
+				margin-bottom:5px;
+			}
+
+			.texto {
+				width:auto;
+				height:auto;
+				padding:10px 0;
+				font-size:12px;
+				text-align:justify;
+			}
+
+				.noticia {
+					margin-bottom:20px;
+					padding:15px;
+					border:1px solid #999;
+					position:relative;
+				}
+
+				.noticia:hover {
+					border:1px solid #00346A;
+				}
+
+					.noticia_fecha {
+						position:absolute;
+						top:-10px;
+						left:5px;
+						background-color:#FFF;
+						padding:3px 8px;
+						font-weight:bold;
+						border:1px solid #EEEEEE;
+					}
+
+		.right_col {
+			width:270px;
+			height:auto;
+			float:left;
+			margin-left:10px;
+		}
+
+			.ban_box {
+				width:auto;
+				height:auto;
+				min-height:40px;
+				padding:5px;
+				background-color:#FFFFFF;
+				border:1px solid #EEEEEE;
+
+				margin-bottom				: 15px;
+				-moz-border-radius			: 5px;
+				-webkit-border-radius 		: 5px;
+				border-radius 				: 5px;
+				border-top-left-radius		: 0;
+				border-bottom-left-radius	: 0;
+			}
+			.ban_box:hover {
+				border:1px solid #00346A;
+			}
+
+
+.footer {
+	width:980px;
+	height:auto;
+	margin:20px auto;
+	text-align:center;
+	font-size:16px;
+	letter-spacing:3px;
+}
+
+.btm_sh {
+	width:950px;
+	margin:0 auto 0px;
+	height:9px;
+	background:url(../img/shadow-b.png) repeat-x;
+}
+
+/* Select Icon -----------------------------------------------  */
+.select_icon {
+	width:60px;
+	height:39px;
+	margin:5px;
+	padding-top:13px;
+	border:1px solid #EEE;
+	text-align:center;
+}
+
+.select_icon:hover {
+	border:1px solid #00346A;
+	background-color:#EEE;
+}
+
+/* Cajas de Mensaje ------------------------------------------  */
+.msj_box_cont {
+	width:100%;
+	height:100%;
+	position:fixed;
+	text-align:center;
+	padding-top:200px;
+	z-index:1000;
+	background:url(../img/transparency_black.png) repeat;
+}
+
+	.msj_box {
+		width:500px;
+		height:auto;
+		margin:auto;
+		background:url(../../includes/img/transparency.png) repeat;
+		border:solid 1px #00346A;
+		position:relative;
+	}
+
+		.msj_box_cerrar {
+			width:auto;
+			height:auto;
+			position:absolute;
+			top:5px;
+			left:475px;
+		}
+
+/* Tooltip ---------------------------------------------------  */
+#dhtmltooltip{
+	font-size:12px;
+	position: absolute;
+	width: auto;
+	padding: 10px;
+	background:url(../../includes/img/transparency_black.png) repeat;
+	visibility: hidden;
+	z-index: 100;
+	text-align:center;
+	color:#F0F0F0;
+
+	border:3px solid #CCCCCC;
+	-moz-border-radius			: 10px;
+	-webkit-border-radius 		: 10px;
+	border-radius 				: 10px;
+	-webkit-box-shadow			: 1px 1px 3px #888;
+	-moz-box-shadow				: 1px 1px 3px #888;
+	border-top-left-radius		: 0;
+	border-bottom-right-radius	: 0;
+}
+
+/* Páginas ---------------------------------------------------  */
+.paginas {
+	width:auto;
+	margin:10px auto;
+}
+
+.paginas td {
+	width:20px;
+	border:1px solid #F0F0F0;
+	text-align:center;
+	font-size:18px;
+	padding:5px;
+}
+
+.paginas td:hover, .pag_selec {
+	background-color:#CCCCCC;
+}
+
+.paginas th {
+	border:1px solid #F0F0F0;
+	background: #fafafb;
+}
+
+.pag_selec {
+	background-color:#00346A;
+}
+
+/* Slider ----------------------------------------------------  */
+#slider {
+	margin-left:10px;
+}
+#slider ul, #slider li,
+#slider2 ul, #slider2 li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+
+#slider li, #slider2 li{
+	width:600px;
+	height:400;
+
+}
+#prevBtn, #nextBtn,
+#slider1next, #slider1prev{
+	display:block;
+	width:30px;
+	height:30px;
+	position:absolute;
+	left:10px;
+	top:150px;
+	z-index:10;
+	}
+#nextBtn, #slider1next{
+	left:670px;
+	}
+#prevBtn a, #nextBtn a,
+#slider1next a, #slider1prev a{
+	display:block;
+	position:relative;
+	width:30px;
+	height:30px;
+	background:url(../img/icons/prev.png) no-repeat 0 0;
+	}
+#nextBtn a, #slider1next a{
+	background:url(../img/icons/next.png) no-repeat 0 0;
+	}
+
+/* Tabla Form ------------------------------------------------  */
+.tabla_form {
+	font: 13px "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; border-collapse: collapse; color: #333; background: #F3F5F7;
+}
+
+
+.tabla_form a {color: #00346A; text-decoration: none; }
+
+.tabla_form a:visited {color: #777;}
+
+.tabla_form a:hover {color: #00346A;}
+
+.tabla_form caption {text-align: left; text-transform: uppercase;  font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
+
+.tabla_form th {background: #00346A; padding: 5px; color: #fff; text-align: left; font-weight: normal; font: 13px "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
+border-bottom:1px solid #00346A;
+	-moz-border-radius			: 5px;
+	-webkit-border-radius 		: 5px;
+	border-radius 				: 5px;
+	border-top-right-radius		: 0;
+	border-bottom-right-radius	: 0;
+}
+
+.tabla_form tbody {
+	border-left: 1px solid #EAECEE; border-right: 1px solid #EAECEE;
+}
+
+.tabla_form tbody {border-bottom: 1px solid #EAECEE;}
+
+.tabla_form tbody td {
+	padding: 5px; background: url("../img/td_back.gif") repeat-x; text-align: left;
+}
+
+.tabla_form tbody tr {background: #F3F5F7;
+}
+
+.tabla_form tbody tr.odd {background: #EEEEEE;}
+
+.tabla_form tbody  tr:hover {background: #EAECEE; color: #111;}
+
+.tabla_form tfoot td .tabla_form tfoot th, .tabla_form tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}
+
+/* Tabla Opciones --------------------------------------------  */
+.tabla_opciones {
+	border-collapse: collapse;
+	border:1px solid #EEE;
+	margin-bottom:10px;
+}
+
+.tabla_opciones:hover {
+	border:1px solid #00346A;
+}
+
+.tabla_opciones td {
+	padding:5px 10px;
+}
+
+.tabla_opciones thead th {
+	font-weight:normal;
+	font-size:20px;
+	background-color:#00346A;
+	font-size:12px;
+	text-align:left;
+	padding:5px 10px;
+
+}
+
+.tabla_opciones tbody th {
+	color: #666;
+	padding: 5px 10px;
+	background: #fafafb;
+	text-align: left;
+	font-weight: normal;
+}
+
+.tabla_opciones tbody tr td {
+	text-align:left;
+	padding: 10px 0 0 10px;
+	color: #000;
+}
+
+.tabla_opciones td.row, tr.row {
+	border-bottom:1px solid #F0F0F0;
+	padding:5px;
+}
+.tabla_opciones td.row:hover, tr.row:hover {
+	background: #FFF url(../img/table/tr_bck.gif) repeat;
+}
+
+.desempeno {
+	border: 1px solid #CCC;
+}
+
+.desempeno:hover {
+	border:1px solid #00346A;
+}
+
+/* Calendario ------------------------------------------------  */
+table.calendar {
+	border-left:1px solid #999;
+}
+
+td.calendar-day {
+	min-height:120px;
+	font-size:11px;
+	position:relative;
+}
+
+td.calendar-day:hover  {
+	background:#00346A;
+}
+
+td.calendar-day-np  {
+	background:#eee;
+	min-height:120px;
+}
+
+td.calendar-day-head {
+	background:#ccc;
+	text-align:center;
+	width:120px;
+	padding:5px;
+	border-bottom:1px solid #999;
+	border-top:1px solid #999;
+	border-right:1px solid #999;
+}
+
+div.day-number {
+	background:#999;
+	padding:5px;
+	color:#fff;
+	font-weight:bold;
+	float:right;
+	margin:-5px -5px 0 0;
+	width:20px;
+	text-align:center
+}
+
+td.calendar-day, td.calendar-day-np {
+	width:120px;
+	height:80px;
+	padding:5px;
+	border-bottom:1px solid #999;
+	border-right:1px solid #999;
+}
+
+div.text_day {
+
+	top:5px;
+	font-size:10px;
+}

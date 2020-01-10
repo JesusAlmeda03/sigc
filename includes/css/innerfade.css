@@ -1,0 +1,74 @@
+
+* { padding: 0; margin: 0; }
+
+
+ul#slide_control li,
+ul#slide_nav li{
+    list-style:none;
+}
+
+#slide_control li{
+    list-style: none;
+    display: block;
+    float:left;
+}
+
+#slide_control {
+    left:200px;
+    position:absolute;
+    top:38px;
+    z-index:5000;
+}
+
+ul#imagenes li {
+	width:700px;
+	height:auto;
+	overflow:hidden;
+	list-style:none;
+	padding: 0px;
+}
+
+
+#slide_nav li:hover, #pause_button, .prev_button, .next_button, #first_button, #last_button {
+cursor: pointer;
+cursor: hand;
+z-index: 5000;
+}
+
+#slide_nav li span, #pause_button span, .prev_button span, .next_button span, #first_button span, #last_button span, #hover_next_button span, #hover_prev_button span, #water_mark span {
+margin-left: -10000px;
+}
+#slide_nav li, #pause_button, .prev_button, .next_button, #first_button, #last_button, #water_mark {
+background-repeat: no-repeat;
+overflow: hidden;
+top: 0px;
+}
+
+ul#slide_nav {
+padding-left: 5px;
+position: absolute;
+top:1200px;
+width:682px;
+height: 10px;
+padding:10px;
+background-image: url(../img/transparency.png);
+text-align:left;
+z-index: 5000;
+}
+ul#slide_nav li {
+background-image: url(../img/innerfade/button_selected.png);
+display: block;
+float: left;
+height: 9px;
+list-style: none;
+margin: 0 0 0 3px;
+padding: 2px;
+width: 10px;
+}
+ul#slide_nav li:hover {
+}
+ul#slide_nav li#button_selected {
+background-image: url(../img/innerfade/button.png);
+}
+ul#slide_nav li#button_selected:hover {
+}
