@@ -41,6 +41,13 @@ class Gestion_model extends CI_Model {
         
     }
 
+
+    //Cuidado aqui
+	function inserta_evidencia_gestion($insercion ) {
+		$resp = $this->db->insert( 'pa_evidencias_gestion', $insert ); 		
+		return $resp;
+	}
+
     //
 	// get_info_sort( $reg ): Especificaciones para el sort de la tabla, estableciendo el número de registros a mostrar
 	//
