@@ -186,6 +186,17 @@
 						foreach ( $procesos as $enlace => $titulo ) {
 							echo '<li><a href="'.base_url().'index.php/'.$enlace.'">'.$titulo.'</a></li>';
 						}
+
+						//Gestion de Riesgos
+						echo '<li><a href="#"><table><tr><td width="180">Gestion de Riesgos</td><td style="padding-left:3px"><img src="'.base_url().'includes/img/arrow_right.png"></td></tr></table></a>';
+						echo '	<ul class="subsub">';
+						echo '		<li><a href="'.base_url().'index.php/procesos/gestion/index/'.$this->session->userdata('id_usuario').'">Listado de Evidencias</a></li>';
+						if( $this->session->userdata('GR') ) {
+							
+							echo '		<li><a href="'.base_url().'index.php/procesos/gestion/nuevo/'.$this->session->userdata('id_usuario').'">Agregar Evidencia</a></li>';
+						}						
+						echo '	</ul></li>';
+
 						// Capacitación
 						echo '<li><a href="#"><table><tr><td width="180">Capacitación</td><td style="padding-left:3px"><img src="'.base_url().'includes/img/arrow_right.png"></td></tr></table></a>';
 						echo '	<ul class="subsub">';

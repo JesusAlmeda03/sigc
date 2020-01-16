@@ -629,6 +629,7 @@ class Usuarios extends CI_Controller {
 			case 11 : $clave = 'AUD'; break;
 			case 12 : $clave = 'CAP'; break;
 			case 13 : $clave = 'RI'; break;
+			case 14 : $clave = 'GR'; break;
 		}
 		$condicion = array(
 		   'IdUsuario'	=> $id_usuario,
@@ -669,6 +670,8 @@ class Usuarios extends CI_Controller {
 			case 10 : $clave = 'ADI'; break;
 			case 11 : $clave = 'AUD'; break;
 			case 12 : $clave = 'CAP'; break;
+			case 13 : $clave = 'RI'; break;
+			case 14 : $clave = 'GR'; break;
 		}
 		
 		if( $this->usuarios_admin_model->quitar_permiso( $id_usuario, $id_permiso ) ) {
@@ -697,7 +700,7 @@ class Usuarios extends CI_Controller {
 		// obtiene los datos del area
 		$areas = $this->usuarios_admin_model->get_area( $ida );
 		if( $areas->num_rows() > 0 ) {
-			$datos_sesion = array('QUE' => 'QUE', 'CON' => 'CON', 'SOL' => 'SOL',	'IND' => 'IND',	'MIN' => 'MIN',	'SAT' => 'SAT',	'MAN' => 'MAN',	'USU' => 'USU',	'CAP' => 'CAP' );
+			$datos_sesion = array('QUE' => 'QUE', 'CON' => 'CON', 'SOL' => 'SOL',	'IND' => 'IND',	'MIN' => 'MIN',	'SAT' => 'SAT',	'MAN' => 'MAN',	'USU' => 'USU',	'CAP' => 'CAP', 'RI' => 'RI', 'GR' => 'GR' );
 			foreach( $areas->result() as $row ) :
 				$datos_sesion['id_area'] 	= $row->IdArea;
 				$datos_sesion['id_sistema']	= $row->IdSistema;				

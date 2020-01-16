@@ -44,7 +44,7 @@
 				}
 				echo '<th class="no_sort" width="15"></th></thead><tbody>';	
 				foreach( $consulta as $usuario => $permisos ) {
-					$columnas = array('',false,false,false,false,false,false,false,false,false,false,false,false,false);
+					$columnas = array('',false,false,false,false,false,false,false,false,false,false,false,false,false, false);
 					foreach( $permisos as $per ) {
 						$area = $per['area'];
 						$ida = $per['ida'];
@@ -54,7 +54,7 @@
 					echo '<tr>';
 					if( $are == 'todos' ) echo '<th style="width:150px; text-align:left; color:#000">'.$area.'</th>';
 					echo '<th style="text-align:left; color:#000">'.$usuario.'</th>';
-					for( $i = 1; $i <= 13; $i++ ){
+					for( $i = 1; $i <= 14; $i++ ){
 						if( $columnas[$i] == true )
 							echo '<td class="sort_imagen" style="text-align:center"><a href="'.base_url().'index.php/admin/usuarios/quitar_permisos/'.$idu.'/'.$i.'/'.$usu.'/'.$are.'" onmouseover="tip(\'Quitar Permiso\')" onmouseout="cierra_tip()"><img src="'.base_url().'includes/img/icons/star_full.png" /></a></td>';
 						else
