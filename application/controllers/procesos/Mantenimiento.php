@@ -131,8 +131,7 @@ function evidencia() {
 				$datos['mensaje_titulo'] = "Error";
 				$datos['mensaje'] = $this->upload->display_errors();
 				$this->load->view('mensajes/error',$datos);
-			}else{
-							
+			}else{			
 				$upload_data = $this->upload->data();
 				$nom_doc = $nom_doc.$upload_data['file_ext'];
 					
