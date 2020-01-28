@@ -526,7 +526,17 @@ class Capacitacion_model extends CI_Model {
 		
 		return $resp;
 	}
-	
+
+	//
+	//actualizar_registro($id) : Actualizar documento
+	//
+	function actualizar_registro($id, $descripcion){
+		echo $id; 
+		echo $descripcion;
+		$consulta = $this->db->query("UPDATE ab_expediente SET Descripcion = '$descripcion' WHERE IdExpediente = '$id' LIMIT 1");
+		
+		return $consulta;
+	}
 	
 }
 ?>
