@@ -632,6 +632,7 @@ class Capacitacion extends CI_Controller {
 		
 		// Obtiene el expediente del usuario
 		$datos['usuario_expediente'] = $this->capacitacion_model->get_usuario_expediente( $id );
+		$datos['sort_tabla'] = $this->Inicio_model->get_sort();
 		
 		// Obtiene el nombre del usuario
 		$usuario_nombre = $this->capacitacion_model->get_usuario( $id );
@@ -647,4 +648,52 @@ class Capacitacion extends CI_Controller {
 		$this->load->view('_estructura/right');
 		$this->load->view('_estructura/footer');
 	}
+
+	//
+	// expediente_modificar(): Revisa el expediente de un usuario 
+	//
+	function expediente_modificar( $id ) {
+		// regresa si no trae las variables
+		if( $this->uri->segment(4) === false ) {
+			redirect( "procesos/capacitacion/expediente_listado" );
+		}
+		
+		// variables necesarias para la página
+		$datos['titulo'] = 'Modificar Descripcion del Documento';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		$datos['id_usuario'] = $id;
+		
+		// Obtiene el expediente del usuario
+		$datos['usuario_expediente'] = $this->capacitacion_model->get_usuario_expediente( $id );
+		$datos['sort_tabla'] = $this->Inicio_model->get_sort();
+		
+		// Obtiene el nombre del usuario
+		$usuario_nombre = $this->capacitacion_model->get_usuario( $id );
+		foreach( $usuario_nombre->result() as $row  ) {
+			$datos['nombre_usuario'] = $row->Nombre.' '.$row->Paterno.' '.$row->Materno;
+		}
+
+		if($_POST){
+			$descripcion = $this->input->post('Descripcion');
+			
+			$this->capacitacion_model->actualizar_registro($id, $descripcion); 
+			redirect('procesos/capacitacion/expediente_revisar/'.$this->session->userdata( 'id_usuario' ));
+
+		}else{
+			// estructura de la página
+			$this->load->view('_estructura/header',$datos);
+			$this->load->view('_estructura/top',$datos);
+			$this->load->view('procesos/capacitacion/expediente/modificar',$datos);
+			$this->load->view( 'mensajes/pregunta_oculta_usuario' );
+			$this->load->view('_estructura/right');
+			$this->load->view('_estructura/footer');
+		}
+		
+		
+	}
+
+
+
 }
