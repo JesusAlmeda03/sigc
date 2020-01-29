@@ -39,13 +39,23 @@
 	                    'value'		=> set_value('archivo'),
 	                    'class'		=> 'in_text',
 	                    'onfocus'	=> "hover('archivo')",
+					), 
+					// Descripcion
+	                'descripcion' => array (
+	                    'name'		=> 'descripcion',
+	                    'id'		=> 'descripcion',
+	                    'value'		=> set_value('descripcion'),
+	                    'class'		=> 'in_text',
+	                    'onfocus'	=> "hover('descripcion')",
 	                )
 				);
 				
             	echo form_open_multipart('',array('name' => 'formulario', 'id' => 'formulario'));
 	            echo '<table class="tabla_form" width="700">';
 				echo '<tr><th class="text_form" width="80">Usuario: </th>';
-	            echo '<td>'.$nombre_usuario.'</td></tr>';
+				echo '<td>'.$nombre_usuario.'</td></tr>';
+				/*echo '<tr><th class="text_form" width="80">Descripcion: </th>';
+				echo '<td>'.form_input($formulario['descripcion']).'</td></tr>';*/
 	            echo '<tr><th class="text_form" width="80">Archivo: </th>';
 	            echo '<td>'.form_upload($formulario['archivo']).'</td></tr>';
 	            echo '</table><br />';

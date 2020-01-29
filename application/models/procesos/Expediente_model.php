@@ -66,6 +66,7 @@ class Expediente_model extends CI_Model {
 		$insert = array(
 			'IdUsuario' => $id_usuario,
 			'Ruta'		=> $nom_doc,
+			//'Descripcion' => $descripcion,
 			'Fecha'		=> date('Y').'/'.date('m').'/'.date('d'),
 		);
 		$resp = $this->db->insert( 'ab_expediente', $insert ); 

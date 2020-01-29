@@ -93,6 +93,7 @@ class Expediente extends CI_Controller {
 		if( $_POST ){		
 			// configuración del archivos a subir
 			$nom_doc = $this->input->post('id_area')."-".$id."-".substr(md5(uniqid(rand())),0,6);
+			//$descripcion = $this->input->post('descripcion');
 			$config['file_name'] = $nom_doc;
 			$config['upload_path'] = './includes/docs/expedientes/';
 			$config['allowed_types'] = '*';

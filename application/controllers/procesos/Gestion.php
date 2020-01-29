@@ -115,57 +115,46 @@ class Gestion extends CI_Controller {
 		$datos['identidad'] = $this -> Inicio_model -> get_identidad();
 		$datos['usuario'] = $this -> Inicio_model -> get_usuario();
 
-		// estructura de la página (1)
-		$this->load->view('_estructura/header', $datos);
+		// Obtiene el nombre del usuario
+		$usuario = $datos['usuario'];
+		
 
-		// regresa si no trae las variables
-		if( $this->uri->segment(4) === false ) {
-			redirect( 'inicio' );
-        }
+		$this -> load -> view('_estructura/header', $datos);
 
-        $datos['evidencias'] = $this->Gestion_model->get_evidencias();
-        $datos['sort_tabla'] = $this->Gestion_model->get_sort();
-
-        if($_POST){		
+		if( $_POST ){		
 			// configuración del archivos a subir
-			$doc = $this->input->post('archivo');
-			$nom_doc =substr(md5(uniqid(rand())),0,6);
+			$nom_doc = $this->session->userdata('id_area')."substr(md5(uniqid(rand())),0,6)";
 			$config['file_name'] = $nom_doc;
-			$config['upload_path'] = './includes/riesgosev/';
+			$config['upload_path'] = './includes/docs/expedientes/';
 			$config['allowed_types'] = '*';
 			$config['max_size']	= '0';
-
-			
+	
 			$this->load->library('upload', $config);
-			
-			$upload_data = $this->upload->data();
-
-			if(!$this->upload->do_upload('archivo')){
+	
+			if ( !$this->upload->do_upload('archivo') ) {
 				// msj de error
-				$datos['mensaje_titulo'] = $this->upload->display_errors();
-				$datos['mensaje'] = $nom_doc;
+				$datos['mensaje_titulo'] = "Error";
+				$datos['mensaje'] = $this->upload->display_errors();
 				$this->load->view('mensajes/error',$datos);
-			}else{
-				//subida de archivos
-                $upload_data = $this->upload->data();
-                $nom_doc = $nom_doc.$upload_data['file_ext'];
-                $insercion =  array(
-                    'IdArea'    => $this->session->userdata('id_area'), 
-                    'IdUsuario' => $this->session->userdata('id_usuario'), 
-                    'Nombre'    => $this->input->post('nombre'), 
-                    'Ruta'      => $nom_doc, 
-                    'Fecha'     => date('Y-m-d'),
-                );
-                // se guarda el documento
-                if($this->Gestion_model->inserta_evidencia($insercion)){
-                    $datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
-                    $datos['mensaje'] = "El archivo se ha guardado correctamente<br />¿deseas agregar ?";
-                    $this->load->view('mensajes/pregunta_enlaces',$datos);	
-                }
-            }
-			
+			}
+			else {						
+				// renombra el documento
+				$upload_data = $this->upload->data();
+				$nom_doc = $nom_doc.$upload_data['file_ext'];
+
+				// se guarda el documento
+				if( $this->gestion_model->inserta_expediente( $id, $nom_doc ) ) {
+					$datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
+					$datos['mensaje'] = "El archivo se ha guardado correctamente<br />¿deseas agregar otro para éste usuario?";
+					$datos['enlace_si'] = "procesos/capacitacion/expediente_agregar/".$id;
+					$datos['enlace_no'] = "procesos/capacitacion/expediente_listado";
+					$this->load->view('mensajes/pregunta_enlaces',$datos);
+				}
+			}
 		}
+		
 		// estructura de la página (2)
+		$this -> load -> view('_estructura/header', $datos);
 		$this -> load -> view('_estructura/top', $datos);
 		$this -> load -> view('procesos/gestion/agregar', $datos);
 		$this -> load -> view('_estructura/right');
