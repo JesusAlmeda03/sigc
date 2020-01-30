@@ -37,9 +37,14 @@
 						echo '	</thead>';
 						echo '	<tbody>';
 						foreach( $evidencias->result() as $row ) {
+							$ruta = base_url()."includes/gestion/".$row->Ruta;
+
 							// obtiene la extensión del documento
 							    echo '	<tr>';					   
-							    echo '	    <th><a onMouseover="ddrivetip(\'No se ha encontrado el<br />documento en formato word\')"; onMouseout="hideddrivetip()" target="_blank"><img src="'.base_url().'includes/img/icons/doc.png" width="35" height="35" /></a></th>';
+								echo '	    <th>
+												<a href="'.$ruta.'"onMouseover="ddrivetip(\'No se ha encontrado el<br />documento en formato word\')"; onMouseout="hideddrivetip()" target="_blank">
+									
+												<img src="'.base_url().'includes/img/icons/doc.png" width="35" height="35" /></a></th>';
                                 echo '		<td>'.$row->Nombre.'</td>';
                                 echo '		<td>'.$row->Fecha.'</td>';
                                 echo '	</tr>';

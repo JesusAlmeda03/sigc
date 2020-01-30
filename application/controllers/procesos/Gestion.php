@@ -126,7 +126,7 @@ class Gestion extends CI_Controller {
 			$nom_doc = $this->session->userdata('id_area').substr(md5(uniqid(rand())),0,6);
 			$config['file_name'] = $nom_doc;
 			$config['upload_path'] = './includes/gestion';
-			$config['allowed_types'] = '*';
+			$config['allowed_types'] = 'pdf|PDF';
 			$config['max_size']	= '0';
 	
 			$this->load->library('upload', $config);
@@ -142,12 +142,20 @@ class Gestion extends CI_Controller {
 				$upload_data = $this->upload->data();
 				$nom_doc = $nom_doc.$upload_data['file_ext'];
 
+				$insert = array(
+					'IdArea' => $this->session->userdata( 'id_area' ), 
+					'IdUsuario' => $this->session->userdata( 'id_usuario' ),
+					'Nombre' => $this->input->post('nombre'), 
+					'Ruta' => $nom_doc, 
+					'Fecha' => date('Y-m-d'),
+				);
+
 				// se guarda el documento
-				if( $this->gestion_model->inserta_expediente( $id, $nom_doc ) ) {
+				if( $this->Gestion_model->inserta_evidencia( $insert) ) {
 					$datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
 					$datos['mensaje'] = "El archivo se ha guardado correctamente<br />¿deseas agregar otro para éste usuario?";
-					$datos['enlace_si'] = "procesos/capacitacion/expediente_agregar/".$id;
-					$datos['enlace_no'] = "procesos/capacitacion/expediente_listado";
+					$datos['enlace_si'] = "procesos/gestion/nuevo".$this->session->userdata('id_usuario');
+					$datos['enlace_no'] = "procesos/gestion/";
 					$this->load->view('mensajes/pregunta_enlaces',$datos);
 				}
 			}
