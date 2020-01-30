@@ -123,9 +123,9 @@ class Gestion extends CI_Controller {
 
 		if( $_POST ){		
 			// configuración del archivos a subir
-			$nom_doc = $this->session->userdata('id_area')."substr(md5(uniqid(rand())),0,6)";
+			$nom_doc = $this->session->userdata('id_area').substr(md5(uniqid(rand())),0,6);
 			$config['file_name'] = $nom_doc;
-			$config['upload_path'] = './includes/docs/expedientes/';
+			$config['upload_path'] = './includes/gestion';
 			$config['allowed_types'] = '*';
 			$config['max_size']	= '0';
 	
