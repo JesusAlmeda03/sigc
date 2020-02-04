@@ -33,7 +33,7 @@
             	
 
 					echo '<table class="tabla" id="tabla" width="700">';
-					echo '<thead><tr><th width="15" class="no_sort"></th><th>Descripcion del Documento</th><th colspan="2">Acciones</th></tr></thead>';
+					echo '<thead><tr><th width="15" class="no_sort"></th><th>Descripcion del Documento</th><th>Tipo</th><th colspan="2">Acciones</th></tr></thead>';
 					echo '<tbody>';
             		foreach( $usuario_expediente->result() as $row ) {
 						echo '<tr>';
@@ -43,6 +43,7 @@
 						}else{
 							echo '	<td>'.$row->Descripcion.'</td>';
 						}
+						echo '	<td>'.strtoupper($row->Tipo).'</td>';
 						
 						echo '	<td>
 									<center>
