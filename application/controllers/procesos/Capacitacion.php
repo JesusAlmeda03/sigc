@@ -677,8 +677,9 @@ class Capacitacion extends CI_Controller {
 
 		if($_POST){
 			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
 			
-			$this->capacitacion_model->actualizar_registro($id, $descripcion); 
+			$this->capacitacion_model->actualizar_registro($id, $descripcion, $tipo); 
 			redirect('procesos/capacitacion/expediente_revisar/'.$this->session->userdata( 'id_usuario' ));
 
 		}else{
