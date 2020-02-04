@@ -577,6 +577,8 @@ class Capacitacion extends CI_Controller {
 		
 		if( $_POST ){		
 			// configuración del archivos a subir
+			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
 			$nom_doc = $this->session->userdata('id_area')."-".$id."-".substr(md5(uniqid(rand())),0,6);
 			$config['file_name'] = $nom_doc;
 			$config['upload_path'] = './includes/docs/expedientes/';
@@ -597,7 +599,7 @@ class Capacitacion extends CI_Controller {
 				$nom_doc = $nom_doc.$upload_data['file_ext'];
 
 				// se guarda el documento
-				if( $this->capacitacion_model->inserta_expediente( $id, $nom_doc ) ) {
+				if( $this->capacitacion_model->inserta_expediente( $id, $nom_doc, $descripcion, $tipo ) ) {
 					$datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
 					$datos['mensaje'] = "El archivo se ha guardado correctamente<br />¿deseas agregar otro para éste usuario?";
 					$datos['enlace_si'] = "procesos/capacitacion/expediente_agregar/".$id;

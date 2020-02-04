@@ -41,12 +41,12 @@
 	                    'onfocus'	=> "hover('archivo')",
 					), 
 					// Descripcion
-	                'descripcion' => array (
-	                    'name'		=> 'descripcion',
-	                    'id'		=> 'descripcion',
-	                    'value'		=> set_value('descripcion'),
+	                'Descripcion' => array (
+	                    'name'		=> 'Descripcion',
+	                    'id'		=> 'Descripcion',
+	                    'value'		=> set_value('Descripcion'),
 	                    'class'		=> 'in_text',
-	                    'onfocus'	=> "hover('descripcion')",
+	                    'onfocus'	=> "hover('Descripcion')",
 	                )
 				);
 				
@@ -54,8 +54,21 @@
 	            echo '<table class="tabla_form" width="700">';
 				echo '<tr><th class="text_form" width="80">Usuario: </th>';
 				echo '<td>'.$nombre_usuario.'</td></tr>';
-				/*echo '<tr><th class="text_form" width="80">Descripcion: </th>';
-				echo '<td>'.form_input($formulario['descripcion']).'</td></tr>';*/
+				echo '<tr><th class="text_form" width="80">Descripcion: </th>';
+				echo '<td>'.form_input($formulario['Descripcion']).'</td></tr>';
+				echo '<tr><th class="text_form" width="80">Tipo: </th>';
+				echo '<td>
+						<select name="Tipo" class="in_text">
+							<option disabled="" slected="selected"> - Selecciona un Tipo -</option>
+							<option value="constancia">Constancia</option>
+							<option value="Induccion">Induccion</option>
+							<option disabled=""> -- Grado de Estudios -- </option>
+							<option value="estudios">Estudios Tecnicos</option>
+							<option value="licenciatura">Licenciatura</option>
+							<option value="maestria">Maestría</option>
+							<option value="doctorado">Doctorado</option>
+						</select>
+					  </td></tr>';
 	            echo '<tr><th class="text_form" width="80">Archivo: </th>';
 	            echo '<td>'.form_upload($formulario['archivo']).'</td></tr>';
 	            echo '</table><br />';

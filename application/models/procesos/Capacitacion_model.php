@@ -419,11 +419,13 @@ class Capacitacion_model extends CI_Model {
 	//
 	// inserta_expediente( $nom_doc ): Obtiene el expediente de un usuario
 	// 
-	function inserta_expediente( $id_usuario, $nom_doc ) {
+	function inserta_expediente( $id_usuario, $nom_doc, $descripcion, $tipo ) {
 		$insert = array(
-			'IdUsuario' => $id_usuario,
-			'Ruta'		=> $nom_doc,
-			'Fecha'		=> date('Y').'/'.date('m').'/'.date('d'),
+			'IdUsuario' 	=> $id_usuario,
+			'Ruta'			=> $nom_doc,
+			'Tipo'			=> $tipo, 
+			'Descripcion' 	=> $descripcion,
+			'Fecha'			=> date('Y').'/'.date('m').'/'.date('d'),
 		);
 		$resp = $this->db->insert( 'ab_expediente', $insert ); 
 		
