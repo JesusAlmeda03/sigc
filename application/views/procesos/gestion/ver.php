@@ -38,6 +38,7 @@
 						echo '	<tbody>';
 						foreach( $evidencias->result() as $row ) {
 							$ruta = base_url()."includes/gestion/".$row->Ruta;
+							
 
 							// obtiene la extensión del documento
 							    echo '	<tr>';					   
@@ -56,7 +57,8 @@
 						
                     }else {
                         echo '<table class="tabla" width="700"><tr><th width="20"><img src="'.base_url().'includes/img/icons/small/info.png" /></th><td>Por el momento no hay Evidencias</td></tr></table>';
-                    }
+					}
+					
                 
                 ?>
             </div>

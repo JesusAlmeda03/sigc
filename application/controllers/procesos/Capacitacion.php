@@ -38,6 +38,7 @@ class Capacitacion extends CI_Controller {
 		else {
 			// Modelo
 			$this->load->model('procesos/capacitacion_model','',TRUE);
+			$this->load->model('procesos/Gestion_model','',TRUE);
 		}
 	}
 	
@@ -634,7 +635,7 @@ class Capacitacion extends CI_Controller {
 		
 		// Obtiene el expediente del usuario
 		$datos['usuario_expediente'] = $this->capacitacion_model->get_usuario_expediente( $id );
-		$datos['sort_tabla'] = $this->Inicio_model->get_sort();
+		$datos['sort_tabla'] = $this->Gestion_model->get_sort();
 		
 		// Obtiene el nombre del usuario
 		$usuario_nombre = $this->capacitacion_model->get_usuario( $id );
