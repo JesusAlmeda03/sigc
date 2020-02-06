@@ -38,6 +38,7 @@ class Capacitacion extends CI_Controller {
 		else {
 			// Modelo
 			$this->load->model('procesos/capacitacion_model','',TRUE);
+			$this->load->model('procesos/Gestion_model','',TRUE);
 		}
 	}
 	
@@ -577,6 +578,8 @@ class Capacitacion extends CI_Controller {
 		
 		if( $_POST ){		
 			// configuración del archivos a subir
+			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
 			$nom_doc = $this->session->userdata('id_area')."-".$id."-".substr(md5(uniqid(rand())),0,6);
 			$config['file_name'] = $nom_doc;
 			$config['upload_path'] = './includes/docs/expedientes/';
@@ -597,7 +600,7 @@ class Capacitacion extends CI_Controller {
 				$nom_doc = $nom_doc.$upload_data['file_ext'];
 
 				// se guarda el documento
-				if( $this->capacitacion_model->inserta_expediente( $id, $nom_doc ) ) {
+				if( $this->capacitacion_model->inserta_expediente( $id, $nom_doc, $descripcion, $tipo ) ) {
 					$datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
 					$datos['mensaje'] = "El archivo se ha guardado correctamente<br />¿deseas agregar otro para éste usuario?";
 					$datos['enlace_si'] = "procesos/capacitacion/expediente_agregar/".$id;
@@ -632,7 +635,7 @@ class Capacitacion extends CI_Controller {
 		
 		// Obtiene el expediente del usuario
 		$datos['usuario_expediente'] = $this->capacitacion_model->get_usuario_expediente( $id );
-		$datos['sort_tabla'] = $this->Inicio_model->get_sort();
+		$datos['sort_tabla'] = $this->Gestion_model->get_sort();
 		
 		// Obtiene el nombre del usuario
 		$usuario_nombre = $this->capacitacion_model->get_usuario( $id );
@@ -677,8 +680,9 @@ class Capacitacion extends CI_Controller {
 
 		if($_POST){
 			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
 			
-			$this->capacitacion_model->actualizar_registro($id, $descripcion); 
+			$this->capacitacion_model->actualizar_registro($id, $descripcion, $tipo); 
 			redirect('procesos/capacitacion/expediente_revisar/'.$this->session->userdata( 'id_usuario' ));
 
 		}else{

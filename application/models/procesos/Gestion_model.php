@@ -43,8 +43,8 @@ class Gestion_model extends CI_Model {
 
 
     //Cuidado aqui
-	function inserta_evidencia($insercion) {
-		$resp = $this->db->insert( 'pa_evidencias_gestion', $insercion); 		
+	function inserta_evidencia($insert) {
+		$resp = $this->db->insert( 'pa_evidencias_gestion', $insert); 		
 		return $resp;
 	}
 
