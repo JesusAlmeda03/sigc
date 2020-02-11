@@ -698,6 +698,44 @@ class Capacitacion extends CI_Controller {
 		
 	}
 
+	//
+	// expediente_modificar(): Revisa el expediente de un usuario 
+	//
+	function expediente_eliminar( $id ) {
+		// regresa si no trae las variables
+		if( $this->uri->segment(4) === false ) {
+			redirect( "procesos/capacitacion/expediente_listado" );
+		}
+		
+		// variables necesarias para la página
+		$datos['titulo'] = 'Modificar Descripcion del Documento';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		$datos['id_usuario'] = $id;
+		
+		//$query = $this->db->query("SELECT * FROM ab_expediente LIMIT 1;");
 
+		if($this->db->query('DELETE FROM ab_expediente WHERE IdExpediente="$id" LIMIT 1;')){
+			echo "Borrado";
+		}else{
+			echo "no paso nada";
+		}
+		
+		redirect('procesos/capacitacion/expediente_revisar/'.$this->session->userdata( 'id_usuario' ));
 
+	
+			// estructura de la página
+			$this->load->view('_estructura/header',$datos);
+			$this->load->view('_estructura/top',$datos);
+			$this->load->view('procesos/capacitacion/expediente/modificar',$datos);
+			$this->load->view( 'mensajes/pregunta_oculta_usuario' );
+			$this->load->view('_estructura/right');
+			$this->load->view('_estructura/footer');
+	
+		
+		
+	}
 }
+
+

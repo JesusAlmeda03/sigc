@@ -33,7 +33,7 @@
             	
 
 					echo '<table class="tabla" id="tabla" width="700">';
-					echo '<thead><tr><th width="15" class="no_sort"></th><th>Descripcion del Documento</th><th>Tipo</th><th>Fecha</th><th colspan="2">Acciones</th></tr></thead>';
+					echo '<thead><tr><th width="15" class="no_sort"></th><th>Descripcion del Documento</th><th>Tipo</th><th>Fecha</th><th colspan="3">Acciones</th></tr></thead>';
 					echo '<tbody>';
             		foreach( $usuario_expediente->result() as $row ) {
 						echo '<tr>';
@@ -57,6 +57,13 @@
 									<center>
 										<a href="'.base_url().'index.php/procesos/capacitacion/expediente_modificar/'.$row->IdExpediente.'">
 											<img src="'.base_url().'includes/img/icons/modificar.png" />
+										</a>
+									</center>
+								</td>
+								<td>
+									<center>
+										<a href="'.base_url().'index.php/procesos/capacitacion/expediente_eliminar/'.$row->IdExpediente.'">
+											<img src="'.base_url().'includes/img/icons/eliminar.png" />
 										</a>
 									</center>
 								</td>';

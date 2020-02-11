@@ -160,4 +160,36 @@ class Expediente extends CI_Controller {
 		$this->load->view('_estructura/right');
 		$this->load->view('_estructura/footer');
 	}
+
+	//
+	// eliminar(): Revisa el expediente de un usuario 
+	//
+	function eliminar( $id ) {
+		// regresa si no trae las variables
+		if( $this->uri->segment(4) === false ) {
+			redirect( "procesos/expediente/listado" );
+		}
+		
+		// variables necesarias para la página
+		$datos['titulo'] = 'Expediente de Usuario';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		
+		// Obtiene los datos del usuario
+		$usuario_expediente = $this->expediente_model->get_usuario( $id );
+		foreach( $usuario_expediente->result() as $row  ) {
+			$datos['nombre_usuario'] = $row->Nombre.' '.$row->Paterno.' '.$row->Materno;
+			break;
+		}
+
+		$this->db->query('DELETE FROM ab_expediente WHERE IdExpediente=$id LIMIT 1');
+		
+		// estructura de la página
+		$this->load->view('_estructura/header',$datos);
+		$this->load->view('_estructura/top',$datos);
+		$this->load->view('procesos/expediente/revisar',$datos);
+		$this->load->view('_estructura/right');
+		$this->load->view('_estructura/footer');
+	}
 }
