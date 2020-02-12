@@ -28,9 +28,6 @@
 				echo '<tr><th class="text_form" width="80">Usuario: </th>';
 	            echo '<td>'.$nombre_usuario.'</td></tr>';
 				echo '</table><br />';
-				
-            	
-            	
 
 					echo '<table class="tabla" id="tabla" width="700">';
 					echo '<thead><tr><th width="15" class="no_sort"></th><th>Descripcion del Documento</th><th>Tipo</th><th>Fecha</th><th colspan="3">Acciones</th></tr></thead>';
@@ -61,11 +58,9 @@
 									</center>
 								</td>
 								<td>
-									<center>
-										<a href="'.base_url().'index.php/procesos/capacitacion/expediente_eliminar/'.$row->IdExpediente.'">
-											<img src="'.base_url().'includes/img/icons/eliminar.png" />
-										</a>
-									</center>
+									<center>';
+									echo '<a onclick="pregunta_cambiar( \'expediente\', '.$row->IdExpediente.', 0, \'&iquest;Deseas eliminar esta archivo del expediente del usuario?\',\'procesos-capacitacion-expediente_revisar-'.$id_usuario.'\')"  target="_blank" onmouseover="tip(\'Eliminar este archivo\')" onmouseout="cierra_tip()"><img src="'.base_url().'includes/img/icons/eliminar.png" /></a>';
+						echo '		</center>
 								</td>';
 						echo '</tr>';
             		}
