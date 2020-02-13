@@ -327,5 +327,18 @@ class Documentos_admin_model extends CI_Model {
 		
 		return $resp;
 	}
+
+	function inserta_resumen($tipo, $descripcion, $nom_doc){
+		$insert = array(
+			'IdSeccion' => 63, 
+			'Descripcion' => $descripcion,
+			'Tipo' 	=> $tipo,
+			'Ruta'	=> $nom_doc, 
+			'Fecha' => date('Y-m-d'),
+		);
+
+		$this->db->insert('pa_resumen', $insert);
+
+	}
 }
 ?>
