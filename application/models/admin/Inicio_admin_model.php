@@ -163,6 +163,12 @@ class Inicio_admin_model extends CI_Model {
 						<li><a href="'.$ruta.'inactivos">Documentos Inactivos</a></li>
 						<li><a href="'.$ruta.'anadir_seccion">A&ntilde;adir Secci&oacute;n</a></li>
 						<li><a href="'.$ruta.'secciones">Lista de Secciones</a></li>
+						<li><a href="#"><table><tr><td width="190">Resumen de Auditorias</td><td style="padding-left:3px"><img src="'.base_url().'includes/img/arrow_right.png"></td></tr></table></a>
+							<ul>
+								<li><a href="'.$ruta.'resumen_listado/">Ver Archivo</a></li>
+								<li><a href="'.$ruta.'resumen_agregar/">Agregar Nuevo</a></li>
+							</ul>
+						</li>
 					</ul>
 				</li>
 			';
