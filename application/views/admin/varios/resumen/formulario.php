@@ -58,7 +58,7 @@
 				echo '<td>
 						<select name="Tipo" class="in_text">
 							<option disabled="" slected="selected"> - Selecciona un Tipo -</option>
-							<option value="Resumen">Resumen de Auditorias</option>
+							<option value="Reporte">Reporte de Auditorias</option>
 							<option value="Plan">Plan de Accion</option>
 							
 						</select>

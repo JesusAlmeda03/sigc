@@ -145,7 +145,9 @@
 									if( $row->Comun ) {
 										echo '<li><a href="'.base_url().'index.php/documentos/comun/'.$row->IdSeccion.'">'.$row->Seccion.'</a></li>';
 									}
+									
 								}
+								echo '<li><a href="'.base_url().'index.php/documentos/resumen/63/">Expediente de Adutorias</a></li>';
 								echo '	</ul>';
 								echo '</li>';
 								// documentos por áreas

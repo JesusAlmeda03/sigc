@@ -114,6 +114,8 @@ class Documentos extends CI_Controller {
 		$datos['identidad'] = $this->Inicio_model->get_identidad();
 		$datos['usuario'] = $this->Inicio_model->get_usuario();
 		
+		$datos['menu'] = $this->menu;
+		
 		
 		
 		// estructura de la página (1)
@@ -148,10 +150,10 @@ class Documentos extends CI_Controller {
 			
 		}else{
 		// estructura de la página (2)
-			$this->load->view('_estructura/top',$datos);
+			$this->load->view('admin/_estructura/top',$datos);
 			$this->load->view('admin/varios/resumen/formulario',$datos);
-			$this->load->view('_estructura/right');
-			$this->load->view('_estructura/footer');
+			
+			$this->load->view('admin/_estructura/footer');
 		}
 
 
@@ -339,6 +341,7 @@ class Documentos extends CI_Controller {
 		$datos['barra'] = $this->barra;
 				
 		// obtiene todo el listado
+		
 		$datos['consulta'] = $this->documentos_admin_model->get_documentos( 'todos', 'comun' );
 				
 		// estructura de la p�gina
