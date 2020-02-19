@@ -112,7 +112,7 @@ class Documentos extends CI_Controller {
 		
 		$datos['documentos'] = $this->documentos_model->get_auexpediente( $id );
 		$datos['id'] = $id;
-		$datos['titulo'] = "Expediente de la auditoria";
+		$datos['titulo'] = "Expediente de la Auditoria Externa";
 		
 		// variables necesarias para la página
 		

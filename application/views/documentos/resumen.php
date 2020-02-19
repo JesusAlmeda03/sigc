@@ -163,7 +163,13 @@
 							echo '		<th><a href="'.base_url().'includes/docs/'.$row->Ruta.'" onMouseover="ddrivetip(\''.$row->Nombre.'\')"; onMouseout="hideddrivetip()"><img src="'.base_url().'includes/img/icons/'.$ext.'.png" width="35" /></a></th>';				
 							echo '		<td>'.$row->Codigo.'</td>';
 							echo '		<td>'.$row->Nombre.'</td>';
-							echo '		<td>'.$row->Tipo.'</td>';
+							if($row->Tipo == "Plan"){
+								echo '		<td>Plan de Accion</td>';
+							}else{
+								echo '		<td>Resumen de Auditoria Externa</td>';
+							}
+							
+
 							echo '		<td>'.$row->Fecha.'</td>';
 							echo '		</tr>';
 	                    }
