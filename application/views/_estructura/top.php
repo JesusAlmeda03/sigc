@@ -28,16 +28,21 @@
 	        <div class="banner">
 	        	<table style="width:955px; margin:auto; padding-top:5px;">
 	        		<tr>
-	        			<td width="68">
-	        				<div style="width:40px; height:40px; background-color:#FFF; border:1px solid #EEE; margin-left:8px; padding:5px;">
-	        					<img src="<?=base_url()?>includes/img/sigc.png" />
-	        				</div>
+						<td width="20%">
+							<center>
+								<img src="https://dipi.ujed.mx/img/header/logo-ujed.png" style="width: 85%; padding: none; margin: none;">
+							</center>
 	        			</td>
-	        			<td valign="middle">
-							<div id="nombre_titulo" style="font-size:42px; color:#FFF; padding-top:5px">
+	        			<td valign="middle" width="65%">
+							<div id="nombre_titulo" style="font-size:40px; color:#FFF; padding-top:5px; text-align: center;">
 		               			SISTEMA INTEGRAL DE GESTI&Oacute;N DE CALIDAD UJED
 		               		</div>
-	        			</td>
+						</td>
+						<td width="15%">
+							<div style="width:60px; background-color:#b11830; margin-left:8px; padding:5px;">
+	        					<img src="<?=base_url()?>includes/img/sigc.png" style="width: 100%"/>
+	        				</div>
+						</td>
 	        		</tr>
 	        	</table>
 	        </div>
