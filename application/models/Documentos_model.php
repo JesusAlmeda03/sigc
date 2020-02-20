@@ -105,5 +105,20 @@ class Documentos_model extends CI_Model {
 		
 		return $consulta;
 	}
+
+	//
+	// get_documentos_comun( $id ): Obtiene los documentos de uso común
+	//
+	function get_auexpediente( $id ) {
+		// si tiene permisos de controlador
+		$condicion = array(
+			'Estado' => 1,
+
+		);
+
+		$consulta=$this->db->get_where('pa_resumen', $condicion);
+		
+		return $consulta;
+	}
 }
 ?>

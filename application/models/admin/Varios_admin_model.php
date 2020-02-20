@@ -68,6 +68,10 @@ class Varios_admin_model extends CI_Model {
 		
 		return $id_curso;
 	}
+
+	function inserta_resumen(){
+		echo "redireccionado";
+	}
 	
 }
 ?>

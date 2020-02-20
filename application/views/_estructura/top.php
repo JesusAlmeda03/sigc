@@ -28,16 +28,21 @@
 	        <div class="banner">
 	        	<table style="width:955px; margin:auto; padding-top:5px;">
 	        		<tr>
-	        			<td width="68">
-	        				<div style="width:40px; height:40px; background-color:#FFF; border:1px solid #EEE; margin-left:8px; padding:5px;">
-	        					<img src="<?=base_url()?>includes/img/sigc.png" />
-	        				</div>
+						<td width="15%">
+							<center>
+								<img src="https://dipi.ujed.mx/img/header/logo-ujed.png" style="width: 75%; padding: none; margin: none;">
+							</center>
 	        			</td>
-	        			<td valign="middle">
-							<div id="nombre_titulo" style="font-size:42px; color:#FFF; padding-top:5px">
+	        			<td valign="middle" width="65%">
+							<div id="nombre_titulo" style="font-size:30px; color:#FFF; padding-top:5px; text-align: center;">
 		               			SISTEMA INTEGRAL DE GESTI&Oacute;N DE CALIDAD UJED
 		               		</div>
-	        			</td>
+						</td>
+						<td width="15%">
+							<div style="width:60px; background-color:#b11830; margin-left:8px; padding:5px;">
+	        					<img src="<?=base_url()?>includes/img/sigc.png" style="width: 100%"/>
+	        				</div>
+						</td>
 	        		</tr>
 	        	</table>
 	        </div>
@@ -145,7 +150,9 @@
 									if( $row->Comun ) {
 										echo '<li><a href="'.base_url().'index.php/documentos/comun/'.$row->IdSeccion.'">'.$row->Seccion.'</a></li>';
 									}
+									
 								}
+								echo '<li><a href="'.base_url().'index.php/documentos/resumen/63/">Expediente de Auditorias Externas</a></li>';
 								echo '	</ul>';
 								echo '</li>';
 								// documentos por áreas
@@ -190,10 +197,10 @@
 						//Gestion de Riesgos
 						echo '<li><a href="#"><table><tr><td width="180">Gestion de Riesgos</td><td style="padding-left:3px"><img src="'.base_url().'includes/img/arrow_right.png"></td></tr></table></a>';
 						echo '	<ul class="subsub">';
-						echo '		<li><a href="'.base_url().'index.php/procesos/gestion/index/'.$this->session->userdata('id_usuario').'">Listado de Evidencias</a></li>';
+						echo '		<li><a href="'.base_url().'index.php/procesos/gestion/index/'.$this->session->userdata('id_usuario').'">Listado de Archivos</a></li>';
 						if( $this->session->userdata('GR') ) {
 							
-							echo '		<li><a href="'.base_url().'index.php/procesos/gestion/nuevo/'.$this->session->userdata('id_usuario').'">Agregar Evidencia</a></li>';
+							echo '		<li><a href="'.base_url().'index.php/procesos/gestion/nuevo/'.$this->session->userdata('id_usuario').'">Agregar Archivos</a></li>';
 						}						
 						echo '	</ul></li>';
 

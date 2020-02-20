@@ -77,8 +77,10 @@ class Documentos extends CI_Controller {
 	//
 	function comun( $id ) {
 		// obtiene los documentos
+		
 		$datos['documentos'] = $this->documentos_model->get_documentos_comun( $id );
 		$datos['id'] = $id;
+
 		
 		// si no hay información
 		$titulo = $this->documentos_model->get_seccion( $id );
@@ -98,6 +100,32 @@ class Documentos extends CI_Controller {
 		$this->load->view( '_estructura/header',$datos );
 		$this->load->view( '_estructura/top', $datos );
 		$this->load->view( 'documentos/comun', $datos );
+		$this->load->view( '_estructura/right', $datos );
+		$this->load->view( '_estructura/footer' );
+	}
+
+	//
+	// comun( $id ): Muestra los documentos de uso común
+	//
+	function resumen( $id ) {
+		// obtiene los documentos
+		
+		$datos['documentos'] = $this->documentos_model->get_auexpediente( $id );
+		$datos['id'] = $id;
+		$datos['titulo'] = "Expediente de la Auditoria Externa";
+		
+		// variables necesarias para la página
+		
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		$this->Inicio_model->set_sort( 15 );
+		$datos['sort_tabla'] = $this->Inicio_model->get_sort();			
+
+		// estructura de la página
+		$this->load->view( '_estructura/header',$datos );
+		$this->load->view( '_estructura/top', $datos );
+		$this->load->view( 'documentos/resumen', $datos );
 		$this->load->view( '_estructura/right', $datos );
 		$this->load->view( '_estructura/footer' );
 	}

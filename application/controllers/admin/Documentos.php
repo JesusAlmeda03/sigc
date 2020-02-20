@@ -55,6 +55,7 @@ class Documentos extends CI_Controller {
 			else {
 				$this->load->model('admin/inicio_admin_model','',TRUE);
 				$this->load->model('admin/documentos_admin_model','',TRUE);
+				$this->load->model('admin/varios_admin_model','',TRUE);
 				$this->set_menu();
 			}
 		}
@@ -63,16 +64,16 @@ class Documentos extends CI_Controller {
 		}
 	}
 
-/** Funciones **/	
+	/** Funciones **/	
 	//
-	// anadir(): Añade documentos
+	// resumen_listado(): muestra listado de documentos
 	//
-	function anadir() {		
+	function resumen_listado() {		
 		// variables necesarias para la estructura de la p�gina
-		$titulo = 'A&ntilde;adir Documento';
+		$titulo = 'Archivo del Resumen de Auditoria';
 		$datos['titulo'] = $titulo;
 		$datos['menu'] = $this->menu;
-		
+		$datos['sort_tabla']= $this->inicio_admin_model->set_sort( 20 );
 		// genera la barra de dirección
 		$this->get_barra( array( 'anadir' => $titulo ) );
 		$datos['barra'] = $this->barra;
@@ -86,70 +87,80 @@ class Documentos extends CI_Controller {
 		
 		// estructura de la página (1)
 		$this->load->view('_estructura/header',$datos);
+
+		$condicion = array(
+			'IdSeccion' => 63
+		);
+
 		
-		if( $_POST ){		
-			// reglas de validaci�n
-			$this->form_validation->set_rules('area', 'area', 'trim');
-			$this->form_validation->set_rules('codigo', 'C&oacute;digo', 'trim');
-			$this->form_validation->set_rules('edicion', 'Edici&oacute;n', 'trim');
-			$this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
-			$this->form_validation->set_rules('fecha', 'Fecha', 'required|trim');
-			$this->form_validation->set_message('required', 'Debes introducir el campo <strong>%s</strong>');
-			
-			// envia mensaje de error si no se cumple con alguna regla
-			if( $this->form_validation->run() == FALSE ){
-				$this->load->view('mensajes/error_validacion',$datos);
-			}
-			// realiza la inserci�n a la base de datos si todo ha estado bien
-			else{
-				// valida el departamento
-				if( !$this->input->post('seccion') ) {
-					// msj de error
-					$datos['mensaje_titulo'] = "Error de Validaci&oacute;n";
-					$datos['mensaje'] = "Has olvidado elegir la secci&oacute;n del Documento";
-					$this->load->view('mensajes/error',$datos);
-				}
-				else {					
-					// configuraci�n de los archivos a subir
-					$nom_doc = $this->input->post('area')."-".$this->input->post('seccion')."-".substr(md5(uniqid(rand())),0,6);
-					$config['file_name'] = $nom_doc;
-					$config['upload_path'] = './includes/docs/';
-					$config['allowed_types'] = 'doc|docx|pdf|xls|xlsx|ppt|pptx';
-					$config['max_size']	= '0';
-			
-					$this->load->library('upload', $config);
-			
-					if ( !$this->upload->do_upload('archivo') ) {
-						// msj de error
-						$datos['mensaje_titulo'] = "Error";
-						$datos['mensaje'] = $this->upload->display_errors();
-						$this->load->view('mensajes/error',$datos);
-					}
-					else {						
-						// renombra el documento
-						$upload_data = $this->upload->data();
-						$nom_doc = $nom_doc.$upload_data['file_ext'];
-
-						// se guarda el documento
-						if( $this->documentos_admin_model->inserta_documento( $nom_doc ) ) {
-							$datos['mensaje_titulo'] = "&Eacute;xito al Guardar";
-							$datos['mensaje'] = "El documento se ha guardado correctamente<br />&iquest;Deseas a&ntilde;adir otro?";
-							$datos['enlace_si'] = "admin/documentos/anadir";
-							$datos['enlace_no'] = "admin/documentos/maestra/".$this->input->post('area');
-							$this->load->view('mensajes/pregunta_enlaces',$datos);
-						}
-					}
-				}
-			}
-		}
-
-		// estructura de la página (2)
+		$listado = $this->db->get_where('pa_resumen', $condicion);
+		$datos['listado'] = $listado;
+		
 		$this->load->view('admin/_estructura/top',$datos);
 		$this->load->view('admin/_estructura/usuario',$datos);
-		$this->load->view('admin/documentos/anadir',$datos);
+		$this->load->view('admin/varios/resumen/lista',$datos);
 		$this->load->view('admin/_estructura/footer');
+		
 	}
 
+	//
+	// resumen_agregar(): Agrega documentos
+	//
+	function resumen_agregar() {		
+		// variables necesarias para la estructura de la p�gina
+		// variables necesarias para la página
+		$datos['titulo'] = 'Actualizar Expediente de Usuario';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		
+		$datos['menu'] = $this->menu;
+		
+		
+		
+		// estructura de la página (1)
+		$this->load->view('_estructura/header',$datos);
+		
+		if( $_POST ){		
+			// configuración del archivos a subir
+			$nom_doc = $this->input->post('id_area')."63-".substr(md5(uniqid(rand())),0,6);
+			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
+			
+			$config['file_name'] = $nom_doc;
+			$config['upload_path'] = './includes/docs/resumen/';
+			$config['allowed_types'] = '*';
+			$config['max_size']	= '0';
+	
+			$this->load->library('upload', $config);
+	
+			if ( !$this->upload->do_upload('archivo') ) {
+				// msj de error
+				$datos['mensaje_titulo'] = "Error";
+				$datos['mensaje'] = $this->upload->display_errors();
+				$this->load->view('mensajes/error',$datos);
+			}else {						
+				// renombra el documento
+				$upload_data = $this->upload->data();
+				$nom_doc = $nom_doc.$upload_data['file_ext'];
+				$this->documentos_admin_model->inserta_resumen( $tipo, $descripcion, $nom_doc );
+				$redi = 'admin/documentos/resumen_listado';
+				redirect($redi);
+			}
+			
+		}else{
+		// estructura de la página (2)
+			$this->load->view('admin/_estructura/top',$datos);
+			$this->load->view('admin/varios/resumen/formulario',$datos);
+			
+			$this->load->view('admin/_estructura/footer');
+		}
+
+
+	}
+
+
+	
 	//
 	// ajax_secciones(): Obtiene las secciones mediante ajax
 	//	
@@ -330,6 +341,7 @@ class Documentos extends CI_Controller {
 		$datos['barra'] = $this->barra;
 				
 		// obtiene todo el listado
+		
 		$datos['consulta'] = $this->documentos_admin_model->get_documentos( 'todos', 'comun' );
 				
 		// estructura de la p�gina
