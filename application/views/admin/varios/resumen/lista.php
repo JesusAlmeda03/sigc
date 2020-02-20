@@ -32,7 +32,7 @@
                             echo '<tr>';
                             echo '	<th><img src="'.base_url().'includes/img/icons/doc.png" /></th>';
                             
-                            echo '	<td>'.$row->Descripcion.'</td>';
+                            echo '	<td>'.$row->Nombre.'</td>';
                             echo '	<td>'.$row->Tipo.'</td>';
                             
                             
