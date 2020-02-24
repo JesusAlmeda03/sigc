@@ -89,7 +89,8 @@ class Documentos extends CI_Controller {
 		$this->load->view('_estructura/header',$datos);
 
 		$condicion = array(
-			'IdSeccion' => 63
+			'IdSeccion' => 63, 
+			
 		);
 
 		
@@ -98,7 +99,7 @@ class Documentos extends CI_Controller {
 		
 		$this->load->view('admin/_estructura/top',$datos);
 		$this->load->view('admin/_estructura/usuario',$datos);
-		$this->load->view('admin/varios/resumen/lista',$datos);
+		$this->load->view('admin/documentos/resumen/lista',$datos);
 		$this->load->view('admin/_estructura/footer');
 		
 	}
@@ -151,12 +152,82 @@ class Documentos extends CI_Controller {
 		}else{
 		// estructura de la página (2)
 			$this->load->view('admin/_estructura/top',$datos);
-			$this->load->view('admin/varios/resumen/formulario',$datos);
+			$this->load->view('admin/documentos/resumen/formulario',$datos);
 			
 			$this->load->view('admin/_estructura/footer');
 		}
 
 
+	}
+
+	//
+	// resumen_editar(): Editar registro de documentos
+	//
+	function resumen_editar($id) {		
+		// variables necesarias para la estructura de la p�gina
+		// variables necesarias para la página
+		$datos['titulo'] = 'Editar Expediente de la Adutoria';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		
+		$datos['menu'] = $this->menu;
+		
+		// estructura de la página (1)
+		$this->load->view('_estructura/header',$datos);
+		$datos['modificar'] = $this->documentos_admin_model->get_resumen($id);
+		
+		if( $_POST ){		
+			// configuración del archivos a subir
+			$nom_doc = $this->input->post('id_area')."63-".substr(md5(uniqid(rand())),0,6);
+			$descripcion = $this->input->post('Descripcion');
+			$tipo = $this->input->post('Tipo');
+			
+			$config['file_name'] = $nom_doc;
+			$config['upload_path'] = './includes/docs/resumen/';
+			$config['allowed_types'] = '*';
+			$config['max_size']	= '0';
+	
+			$this->load->library('upload', $config);
+	
+			if ( !$this->upload->do_upload('archivo') ) {
+				// msj de error
+				$datos['mensaje_titulo'] = "Error";
+				$datos['mensaje'] = $this->upload->display_errors();
+				$this->load->view('mensajes/error',$datos);
+			}else {						
+				// renombra el documento
+				$upload_data = $this->upload->data();
+				$nom_doc = $nom_doc.$upload_data['file_ext'];
+				$this->documentos_admin_model->inserta_resumen( $tipo, $descripcion, $nom_doc );
+				$redi = 'admin/documentos/resumen_listado';
+				redirect($redi);
+			}
+			
+		}else{
+		// estructura de la página (2)
+			$this->load->view('admin/_estructura/top',$datos);
+			$this->load->view('admin/documentos/resumen/editar',$datos);
+			
+			$this->load->view('admin/_estructura/footer');
+		}
+
+
+	}
+//
+	// resumen_editar(): Editar registro de documentos
+	//
+	function resumen_eliminar($id) {		
+		// variables necesarias para la estructura de la p�gina
+		// variables necesarias para la página
+		$datos['titulo'] = 'Editar Expediente de la Adutoria';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		
+		$datos['menu'] = $this->menu;
+		$consulta = $this->db->query("UPDATE pa_resumen SET Estado = 0 WHERE IdResumen = $id LIMIT 1");
+		return $consulta;
 	}
 
 

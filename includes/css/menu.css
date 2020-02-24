@@ -84,11 +84,11 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 .sub li:first-child a:hover {
-	background:url(../../includes/img/shadow-b.png) repeat-x top #00346A;
+	background:url(../../includes/img/shadow-b.png) repeat-x top #b11830;
 }
 
 .sf-menu ul li a:hover {
-	background:url(../../includes/img/shadow-b.png) repeat-x top #00346A;
+	background:url(../../includes/img/shadow-b.png) repeat-x top #b11830;
 	color:#FFF;
 }
 
@@ -114,7 +114,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 .sf-menu ul li:hover {
-	background-color:#00346A;
+	background-color:#b11830;
 	background-image:none;
 	color:#FFF;
 }
