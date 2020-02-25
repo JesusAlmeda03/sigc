@@ -340,5 +340,14 @@ class Documentos_admin_model extends CI_Model {
 		$this->db->insert('pa_resumen', $insert);
 
 	}
+
+	function get_resumen($id){
+		$condicion = array(
+			'IdResumen' => $id
+		);
+
+		$consulta = $this->db->get_where('pa_resumen', $condicion);
+		return $consulta;
+	}
 }
 ?>

@@ -46,6 +46,34 @@
                                         </center>
                                     </td>
                                     ';
+                            echo '	<td>
+                                    <center>
+                                        <a href="'.base_url().'index.php/admin/documentos/resumen_editar/'.$row->IdResumen.'">
+                                            <img src="'.base_url().'includes/img/icons/modificar.png" />
+                                        </a>
+                                    </center>
+                                </td>
+                                ';
+                            if($row->Estado == 1){
+                                echo '	<td>
+                                    <center>
+                                        <a href="'.base_url().'index.php/admin/documentos/resumen_eliminar/'.$row->IdResumen.'">
+                                            <img src="'.base_url().'includes/img/icons/eliminar.png" />
+                                        </a>
+                                    </center>
+                                </td>
+                                ';
+                            }else{
+                                echo '	<td>
+                                    <center>
+                                        <a href="'.base_url().'index.php/admin/documentos/resumen_cambiar/'.$row->IdResumen.'">
+                                            <img src="'.base_url().'includes/img/icons/activar.png" />
+                                        </a>
+                                    </center>
+                                </td>
+                                ';
+                            }
+            
                             echo '</tr>';
                         }
                     }else{

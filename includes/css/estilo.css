@@ -55,7 +55,7 @@ a:hover {
 }
 
 .a2:hover {
-	color:#00346A;
+	color:#b11830;
 	text-decoration:none;
 }
 
@@ -82,7 +82,7 @@ input.in_text {
 	border-radius 				: 5px;
 }
 input.in_text:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 }
 
 /*botón*/
@@ -106,7 +106,7 @@ textarea {
 	border-radius 				: 5px;
 }
 textarea:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 }
 
 /*select*/
@@ -121,7 +121,7 @@ select{
 	border-radius 				: 5px;
 }
 select:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 }
 
 option {
@@ -235,7 +235,7 @@ body {
 				}
 
 				.noticia:hover {
-					border:1px solid #00346A;
+					border:1px solid #b11830;
 				}
 
 					.noticia_fecha {
@@ -271,7 +271,7 @@ body {
 				border-bottom-left-radius	: 0;
 			}
 			.ban_box:hover {
-				border:1px solid #00346A;
+				border:1px solid #b11830;
 			}
 
 
@@ -302,7 +302,7 @@ body {
 }
 
 .select_icon:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 	background-color:#EEE;
 }
 
@@ -322,7 +322,7 @@ body {
 		height:auto;
 		margin:auto;
 		background:url(../../includes/img/transparency.png) repeat;
-		border:solid 1px #00346A;
+		border:solid 1px #b11830;
 		position:relative;
 	}
 
@@ -380,7 +380,7 @@ body {
 }
 
 .pag_selec {
-	background-color:#00346A;
+	background-color:#b11830;;
 }
 
 /* Slider ----------------------------------------------------  */
@@ -430,16 +430,16 @@ body {
 }
 
 
-.tabla_form a {color: #00346A; text-decoration: none; }
+.tabla_form a {color: #b11830; text-decoration: none; }
 
 .tabla_form a:visited {color: #777;}
 
-.tabla_form a:hover {color: #00346A;}
+.tabla_form a:hover {color: #b11830;}
 
 .tabla_form caption {text-align: left; text-transform: uppercase;  font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
 
-.tabla_form th {background: #00346A; padding: 5px; color: #fff; text-align: left; font-weight: normal; font: 13px "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
-border-bottom:1px solid #00346A;
+.tabla_form th {background: #b11830;; padding: 5px; color: #fff; text-align: left; font-weight: normal; font: 13px "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
+border-bottom:1px solid #b11830;;
 	-moz-border-radius			: 5px;
 	-webkit-border-radius 		: 5px;
 	border-radius 				: 5px;
@@ -474,7 +474,7 @@ border-bottom:1px solid #00346A;
 }
 
 .tabla_opciones:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 }
 
 .tabla_opciones td {
@@ -484,7 +484,7 @@ border-bottom:1px solid #00346A;
 .tabla_opciones thead th {
 	font-weight:normal;
 	font-size:20px;
-	background-color:#00346A;
+	background-color:#b11830;;
 	font-size:12px;
 	text-align:left;
 	padding:5px 10px;
@@ -518,7 +518,7 @@ border-bottom:1px solid #00346A;
 }
 
 .desempeno:hover {
-	border:1px solid #00346A;
+	border:1px solid #b11830;
 }
 
 /* Calendario ------------------------------------------------  */
@@ -533,7 +533,7 @@ td.calendar-day {
 }
 
 td.calendar-day:hover  {
-	background:#00346A;
+	background:#b11830;
 }
 
 td.calendar-day-np  {
