@@ -63,7 +63,7 @@
 						echo form_open_multipart('',array('name' => 'formulario', 'id' => 'formulario'));
 						echo '<table class="tabla_form" width="700">';
 						echo '<tr><th class="text_form" width="80">Descripcion: </th>';
-						echo '<td><input type="text" name="Direccion" class="in_text" value="'.$row->Nombre.'"></td></tr>';
+						echo '<td><input type="text" name="Descripcion" class="in_text" value="'.$row->Nombre.'"></td></tr>';
 						echo '<tr><th class="text_form" width="80">Tipo: </th>';
 						echo '<td>
 								<select name="Tipo" class="in_text">

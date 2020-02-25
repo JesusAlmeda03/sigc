@@ -30,6 +30,7 @@ class Documentos extends CI_Controller {
 /** Propiedades **/
 	public function set_menu() {
 		$this->menu = $this->inicio_admin_model->get_menu( 'documentos' );
+
 	}
 	
 	public function get_barra( $enlaces ) {
@@ -56,7 +57,10 @@ class Documentos extends CI_Controller {
 				$this->load->model('admin/inicio_admin_model','',TRUE);
 				$this->load->model('admin/documentos_admin_model','',TRUE);
 				$this->load->model('admin/varios_admin_model','',TRUE);
+				
 				$this->set_menu();
+
+				
 			}
 		}
 		else {
@@ -73,7 +77,7 @@ class Documentos extends CI_Controller {
 		$titulo = 'Archivo del Resumen de Auditoria';
 		$datos['titulo'] = $titulo;
 		$datos['menu'] = $this->menu;
-		$datos['sort_tabla']= $this->inicio_admin_model->set_sort( 20 );
+		$datos['sort_tabla']= $this->inicio_admin_model->get_info_sort( 20 );
 		// genera la barra de dirección
 		$this->get_barra( array( 'anadir' => $titulo ) );
 		$datos['barra'] = $this->barra;
@@ -199,7 +203,7 @@ class Documentos extends CI_Controller {
 				// renombra el documento
 				$upload_data = $this->upload->data();
 				$nom_doc = $nom_doc.$upload_data['file_ext'];
-				$this->documentos_admin_model->inserta_resumen( $tipo, $descripcion, $nom_doc );
+				$this->db->query("UPDATE pa_resumen SET Nombre='$descripcion', Ruta='$nom_doc', Tipo='$tipo' WHERE IdResumen = $id LIMIT 1");
 				$redi = 'admin/documentos/resumen_listado';
 				redirect($redi);
 			}
@@ -214,7 +218,7 @@ class Documentos extends CI_Controller {
 
 
 	}
-//
+	//
 	// resumen_editar(): Editar registro de documentos
 	//
 	function resumen_eliminar($id) {		
@@ -227,7 +231,26 @@ class Documentos extends CI_Controller {
 		
 		$datos['menu'] = $this->menu;
 		$consulta = $this->db->query("UPDATE pa_resumen SET Estado = 0 WHERE IdResumen = $id LIMIT 1");
-		return $consulta;
+		
+		$direccion= $base_url.'admin/documentos/resumen_listado';
+		redirect($direccion);
+	}
+
+	//
+	// resumen_editar(): Editar registro de documentos
+	//
+	function resumen_cambiar($id) {		
+		// variables necesarias para la estructura de la p�gina
+		// variables necesarias para la página
+		$datos['titulo'] = 'Editar Expediente de la Adutoria';
+		$datos['secciones'] = $this->Inicio_model->get_secciones();
+		$datos['identidad'] = $this->Inicio_model->get_identidad();
+		$datos['usuario'] = $this->Inicio_model->get_usuario();
+		
+		$datos['menu'] = $this->menu;
+		$consulta = $this->db->query("UPDATE pa_resumen SET Estado = 1 WHERE IdResumen = $id LIMIT 1");
+		$direccion= $base_url.'admin/documentos/resumen_listado';
+		redirect($direccion);
 	}
 
 
@@ -758,6 +781,9 @@ class Documentos extends CI_Controller {
 		$titulo = 'Modificar Secci&oacute;n';
 		$datos['titulo'] = $titulo;
 		$datos['menu'] = $this->menu;
+
+		$datos['sort_table'] = $this->Inicio_admin_model->get_info_sort( 15 );
+		
 		
 		// genera la barra de dirección
 		$enlaces = array (
